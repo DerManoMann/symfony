@@ -54,7 +54,7 @@ use Symfony\Component\TypeInfo\TypeIdentifier;
  * @author Mathias Arlaud <mathias.arlaud@gmail.com>
  * @author Baptiste Leduc <baptiste.leduc@gmail.com>
  */
-final class StringTypeResolver implements TypeResolverInterface
+class StringTypeResolver implements TypeResolverInterface
 {
     /**
      * @var array<string, bool>
@@ -104,7 +104,7 @@ final class StringTypeResolver implements TypeResolverInterface
         }
     }
 
-    private function getTypeFromNode(TypeNode $node, ?TypeContext $typeContext): Type
+    protected function getTypeFromNode(TypeNode $node, ?TypeContext $typeContext): Type
     {
         $typeIsCollectionObject = static fn (Type $type): bool => $type->isIdentifiedBy(\Traversable::class) || $type->isIdentifiedBy(\ArrayAccess::class);
 
@@ -357,7 +357,7 @@ final class StringTypeResolver implements TypeResolverInterface
         throw new \DomainException(\sprintf('Unhandled "%s" node.', $node::class));
     }
 
-    private function resolveCustomIdentifier(string $identifier, ?TypeContext $typeContext): Type
+    protected function resolveCustomIdentifier(string $identifier, ?TypeContext $typeContext): Type
     {
         $className = $typeContext ? $typeContext->normalize($identifier) : $identifier;
 

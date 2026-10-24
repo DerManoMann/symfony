@@ -31,10 +31,11 @@ use Symfony\Component\TypeInfo\Type;
 use Symfony\Component\TypeInfo\TypeContext\TypeContext;
 use Symfony\Component\TypeInfo\TypeContext\TypeContextFactory;
 use Symfony\Component\TypeInfo\TypeResolver\StringTypeResolver;
+use Symfony\Component\TypeInfo\TypeResolver\TypeResolverInterface;
 
 class StringTypeResolverTest extends TestCase
 {
-    private StringTypeResolver $resolver;
+    protected TypeResolverInterface $resolver;
 
     protected function setUp(): void
     {
